@@ -26,30 +26,30 @@ Laravel 框架的所有配置文件都存储在 `config` 目录。配置文件�
 <a name="environment-configuration"></a>
 ## 环境配置
 
-It is often helpful to have different configuration values based on the environment the application is running in. For example, you may wish to use a different cache driver locally than you do on your production server.
+让应用程序在不同的环境使用不同的配置值是一件很有帮助的事情。例如，你可能希望本地的开发环境与生产服务器使用不同的缓存驱动。
 
-To make this a cinch, Laravel utilizes the [DotEnv](https://github.com/vlucas/phpdotenv) PHP library by Vance Lucas. In a fresh Laravel installation, the root directory of your application will contain a `.env.example` file. If you install Laravel via Composer, this file will automatically be renamed to `.env`. Otherwise, you should rename the file manually.
+Laravel 通过使用 [DotEnv](https://github.com/vlucas/phpdotenv) PHP library by Vance Lucas 来实现此功能。全新安装的 Laravel 在根目录中会有一个 `.env.example` 文件。如果是用 Composer 安装，此文件会被自动重命名为 `.env`。反之，你需要手动重命名此文件。
 
-#### Retrieving Environment Configuration
+#### 取回环境配置
 
-All of the variables listed in this file will be loaded into the `$_ENV` PHP super-global when your application receives a request. However, you may use the `env` helper to retrieve values from these variables in your configuration files. In fact, if you review the Laravel configuration files, you will notice several of the options already using this helper:
+当程序接收请求时，文件中的所有变量均被载入到 PHP 的超级全局变量 `$_ENV` 里面。当然，你可以使用 `env` 帮助器去获取环境配置文件中的变量。事实上，如果你查阅过 Laravel 配置文件，你可能会注意到已有部分选项使用了这个帮助器方法：
 
     'debug' => env('APP_DEBUG', false),
 
-The second value passed to the `env` function is the "default value". This value will be used if no environment variable exists for the given key.
+`env` 方法的第二个参数用于设置选项的默认值，当环境变量不存在时就会返回此默认值。
 
-Your `.env` file should not be committed to your application's source control, since each developer / server using your application could require a different environment configuration.
+由于不同的环境使用不同的环境配置文件，因此，应将 `env` 文件从版本控制系统中排除。
 
-If you are developing with a team, you may wish to continue including a `.env.example` file with your application. By putting place-holder values in the example configuration file, other developers on your team can clearly see which environment variables are needed to run your application.
+对于团队协作开发的情况，有必要在程序根目录保留一份 `.env.example` 文件。并在其中做一些占位值的设置，以便团队其他成员了解正确运行程序所需的配置。
 
 <a name="determining-the-current-environment"></a>
-### Determining The Current Environment
+### 检测当前环境
 
-The current application environment is determined via the `APP_ENV` variable from your `.env` file. You may access this value via the `environment` method on the `App` [facade](/docs/{{version}}/facades):
+使用 `APP_ENV` 变量即可从 `.env` 文件中检测到当前应用的运行环境。也可使用 `App` [facade](/docs/{{version}}/facades) 的 `environment` 方法访问此值：
 
     $environment = App::environment();
 
-You may also pass arguments to the `environment` method to check if the environment matches a given value. The method will return `true` if the environment matches any of the given values:
+可以通过向 `environment` 方法中传值来检查环境。方法会根据值的匹配情况做出判断：
 
     if (App::environment('local')) {
         // The environment is local
@@ -60,18 +60,18 @@ You may also pass arguments to the `environment` method to check if the environm
     }
 
 <a name="configuration-caching"></a>
-## Configuration Caching
+## 配置缓存
 
-To give your application a speed boost, you should cache all of your configuration files into a single file using the `config:cache` Artisan command. This will combine all of the configuration options for your application into a single file which will be loaded quickly by the framework.
+想提升程序的运行速度，可以使用 Artisan 的 `config:cache` 命令将所有的配置文件整合成一个单独文件，从而加快框架载入配置文件的速度。
 
-You should typically run the `php artisan config:cache` command as part of your production deployment routine. The command should not be run during local development as configuration options will frequently need to be changed during the course of your application's development.
+通常，`php artisan config:cache` 命令只在生产环境中使用。由于在本地开发时经常需要修改配置文件，因此，本地开发环境不应该使用此命令。
 
 <a name="maintenance-mode"></a>
-## Maintenance Mode
+## 维护模式
 
-When your application is in maintenance mode, a custom view will be displayed for all requests into your application. This makes it easy to "disable" your application while it is updating or when you are performing maintenance. A maintenance mode check is included in the default middleware stack for your application. If the application is in maintenance mode, a `MaintenanceModeException` will be thrown with a status code of 503.
+当程序进入维护模式，任何对网站的请求都会返回一个自定义的视图。这样就能在更新或维护网站时轻松的禁用网站访问。维护模式会使用 stack middleware 对程序做检查。如果程序出于维护模式，则抛出带有 503 状态码的 `MaintenanceModeException` 错误。
 
-To enable maintenance mode, simply execute the `down` Artisan command:
+执行 `down` Artisan 命令即可启用维护模式：
 
     php artisan down
 
