@@ -1,30 +1,30 @@
-# Configuration
+# 配置
 
-- [Introduction](#introduction)
-- [Accessing Configuration Values](#accessing-configuration-values)
-- [Environment Configuration](#environment-configuration)
-    - [Determining The Current Environment](#determining-the-current-environment)
-- [Configuration Caching](#configuration-caching)
-- [Maintenance Mode](#maintenance-mode)
+- [介绍](#introduction)
+- [访问配置的值](#accessing-configuration-values)
+- [环境配置](#environment-configuration)
+    - [检测当前环境](#determining-the-current-environment)
+- [配置缓存](#configuration-caching)
+- [维护模式](#maintenance-mode)
 
 <a name="introduction"></a>
-## Introduction
+## 介绍
 
-All of the configuration files for the Laravel framework are stored in the `config` directory. Each option is documented, so feel free to look through the files and get familiar with the options available to you.
+Laravel 框架的所有配置文件都存储在 `config` 目录。配置文件中的每个选项均有注释说明，您可随时查阅以便了解各项设置。
 
 <a name="accessing-configuration-values"></a>
-## Accessing Configuration Values
+## 访问配置的值
 
-You may easily access your configuration values using the global `config` helper function from anywhere in your application. The configuration values may be accessed using "dot" syntax, which includes the name of the file and option you wish to access. A default value may also be specified and will be returned if the configuration option does not exist:
+通过使用全局的 `config` 帮助器方法，你可以在程序的任何位置轻松的访问到配置的值。配置值可以使用“点”语法访问，包括文件名和你需要访问的选项名。若配置项值不存在，程序会自动设置并返回默认值：
 
     $value = config('app.timezone');
 
-To set configuration values at runtime, pass an array to the `config` helper:
+在程序运行时设置选项的值，可以向 `config` 帮助器传入一个数组：
 
     config(['app.timezone' => 'America/Chicago']);
 
 <a name="environment-configuration"></a>
-## Environment Configuration
+## 环境配置
 
 It is often helpful to have different configuration values based on the environment the application is running in. For example, you may wish to use a different cache driver locally than you do on your production server.
 
