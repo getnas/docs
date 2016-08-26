@@ -67,12 +67,12 @@ Laravel 程序的默认架构是为给各种规模的应用提供更好的开发
 <a name="the-resources-directory"></a>
 #### The Resources Directory
 
-The `resources` directory contains your views as well as your raw, un-compiled assets such as LESS, SASS, or JavaScript. This directory also houses all of your language files.
+`resources` 存放视图文件以及原生、位编译的 LESS、SASS 或 Javascript 等资源文件。也同时用作存放语言文件。
 
 <a name="the-routes-directory"></a>
 #### The Routes Directory
 
-The `routes` directory contains all of the route definitions for your application. By default, three route files are included with Laravel: `web.php`, `api.php`, and `console.php`.
+`routes` 目录存放所有的路由文件。默认包含三个路由文件：`web.php`、 `api.php` 和 `console.php`。
 
 The `web.php` file contains routes that the `RouteServiceProvider` places in the `web` middleware group, which provides session state, CSRF protection, and cookie encryption. If your application does not offer a stateless, RESTful API, all of your routes will most likely be defined in the `web.php` file.
 
