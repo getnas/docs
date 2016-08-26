@@ -75,22 +75,22 @@ Laravel 通过使用 [DotEnv](https://github.com/vlucas/phpdotenv) PHP library b
 
     php artisan down
 
-You may also provide `message` and `retry` options to the `down` command. The `message` value may be used to display or log a custom message, while the `retry` value will be set as the `Retry-After` HTTP header's value:
+还可以向 `down` 命令添加 `message` 和 `retry` 选项。`message` 的值用于显示消息或将消息记录到日志，`retry`的值将被设置为 HTTP 头 `Retry-After` 的值：
 
     php artisan down --message='Upgrading Database' --retry=60
 
-To disable maintenance mode, use the `up` command:
+执行 `up` 命令禁用维护模式：
 
     php artisan up
 
-#### Maintenance Mode Response Template
+#### 维护模式响应模板
 
-The default template for maintenance mode responses is located in `resources/views/errors/503.blade.php`. You are free to modify this view as needed for your application.
+响应模式默认模板为 `resources/views/errors/503.blade.php`，你可以根据需要自由修改。
 
-#### Maintenance Mode & Queues
+#### 维护模式 & 队列
 
-While your application is in maintenance mode, no [queued jobs](/docs/{{version}}/queues) will be handled. The jobs will continue to be handled as normal once the application is out of maintenance mode.
+出于维护模式的程序不会处理任何 [队列任务](/docs/{{version}}/queues)。当程序退出维护模式后，队列任务会重新开始处理。
 
-#### Alternatives To Maintenance Mode
+#### 维护模式的替代方案
 
-Since maintenance mode requires your application to have several seconds of downtime, consider alternatives like [Envoyer](https://envoyer.io) to accomplish zero-downtime deployment with Laravel.
+由于维护模式会导致程序在一段时间内无法访问，可以考虑类似 [Envoyer](https://envoyer.io) 的零宕机部署方案。
