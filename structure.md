@@ -1,7 +1,7 @@
-# Directory Structure
+# 目录结构
 
-- [Introduction](#introduction)
-- [The Root Directory](#the-root-directory)
+- [介绍](#introduction)
+- [程序根目录](#the-root-directory)
     - [The `app` Directory](#the-root-app-directory)
     - [The `bootstrap` Directory](#the-bootstrap-directory)
     - [The `config` Directory](#the-config-directory)
@@ -25,43 +25,44 @@
     - [The `Providers` Directory](#the-providers-directory)
 
 <a name="introduction"></a>
-## Introduction
+## 介绍
 
-The default Laravel application structure is intended to provide a great starting point for both large and small applications. Of course, you are free to organize your application however you like. Laravel imposes almost no restrictions on where any given class is located - as long as Composer can autoload the class.
+Laravel 程序的默认架构是为给各种规模的应用提供更好的开发起点而设计的。当然，你可以按照自己的意愿自由重新组织文件结构。由于 Compoer 会自动加载类文件，因此 Laravel 从不会强制任何类文件的存放位置。
 
-#### Where Is The Models Directory?
+#### 模型(Model)在哪个目录？
 
-When getting started with Laravel, many developers are confused by the lack of a `models` directory. However, the lack of such a directory is intentional. We find the word "models" ambiguous since it means many different things to many different people. Some developers refer to an application's "model" as the totality of all of its business logic, while others refer to "models" as classes that interact with a relational database.
+初次使用 Laravel，很多开发者困惑找不到 `models` 目录。当然，这个目录的缺失是有意而为之的。我们发现，人们常常对 "models" 这个词汇有不同的理解。一些开发者认为应用的 "models" 代表完整的业务逻辑，而另外一些人认为 "models" 是与关系型数据库进行交互的类。
 
-For this reason, we choose to place Eloquent models in the `app` directory by default, and allow the developer to place them somewhere else if they choose.
+综上，我们选择将 Eloquent models 默认存放在 `app` 目录，由开发者自行决定是否将他们放在其他什么位置。
 
 <a name="the-root-directory"></a>
-## The Root Directory
+## 程序根目录
 
 <a name="the-root-app-directory"></a>
 #### The App Directory
 
-The `app` directory, as you might expect, contains the core code of your application. We'll explore this directory in more detail soon; however, almost all of the classes in your application will be in this directory.
+你可能已经猜到了，`app` 目录包括应用程序的所有核心代码。我们会在后面展开介绍此目录；当然，你所开发的应用的类文件也都将存放在这里。
 
 <a name="the-bootstrap-directory"></a>
 #### The Bootstrap Directory
 
-The `bootstrap` directory contains files that bootstrap the framework and configure autoloading. This directory also houses a `cache` directory which contains framework generated files for performance optimization such as the route and services cache files.
+`bootstrap` 目录包含哪些用于启动框架和自动加载配置的文件。其中还包含一个 `cache` 目录，存放由框架自动生成的提升框架性能的例如路由和服务缓存等文件。
 
 <a name="the-config-directory"></a>
 #### The Config Directory
 
-The `config` directory, as the name implies, contains all of your application's configuration files. It's a great idea to read through all of these files and familiarize yourself with all of the options available to you.
+与 `config` 目录名称字面意思相同，此目录包含所有应用的配置文件。阅读并了解所有的配置文件对你的开发工作会很有帮助。
+
 
 <a name="the-database-directory"></a>
 #### The Database Directory
 
-The `database` directory contains your database migration and seeds. If you wish, you may also use this directory to hold an SQLite database.
+`database` 目录包含所有数据库迁移文件和种子文件。如果需要，你也可以在此目录存储 SQLite 数据库。
 
 <a name="the-public-directory"></a>
 #### The Public Directory
 
-The `public` directory contains the `index.php` file, which is the entry point for all requests entering your application. This directory also houses your assets such as images, JavaScript, and CSS.
+`public` 目录包含的 `index.php` 是所有程序请求的入口文件。此目录同时用于存放图片、Javascript 和 CSS 等资源文件。
 
 <a name="the-resources-directory"></a>
 #### The Resources Directory
