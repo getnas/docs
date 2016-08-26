@@ -74,11 +74,12 @@ Laravel 程序的默认架构是为给各种规模的应用提供更好的开发
 
 `routes` 目录存放所有的路由文件。默认包含三个路由文件：`web.php`、 `api.php` 和 `console.php`。
 
-The `web.php` file contains routes that the `RouteServiceProvider` places in the `web` middleware group, which provides session state, CSRF protection, and cookie encryption. If your application does not offer a stateless, RESTful API, all of your routes will most likely be defined in the `web.php` file.
+`web.php` 是由 `RouteServiceProvider` 定义的路由文件，位于 `web` 中间件组当中，该中间件提供会话状态、CSRF 保护和 cookie 加密。如果你的程序不提供 RESTful API，就应该将所有路由定义在 `web.php` 文件中。
 
-The `api.php` file contains routes that the `RouteServiceProvider` places in the `api` middleware group, which provides rate limiting. These routes are intended to be stateless, so requests entering the application through these routes are intended to be authenticated via tokens and will not have access to session state.
+`api.php` 是由 `RouteServiceProvider` 定义的路由文件，位于 `api` 中间件组当中，该中间件提供速度限制。此文件定义无状态路由，因此入站请求会通过 tokens 认证身份且不会访问 session 状态。
 
-The `console.php` file is where you may define all of your Closure based console commands. Each Closure is bound to a command instance allowing a simple approach to interacting with each command's IO methods. Even though this file does not define HTTP routes, it defines console based entry points (routes) into your application.
+你可以在 `console.php` 文件中定义所有基于命令行的闭包。每个闭包都与一个命令行实例绑定，它与命令的 IO 方法之间建立一种简易的交互通。此文件并不用于定义 HTTP 路由，它定义基于控制台的入口点（路由）到您的应用程序中。
+
 
 <a name="the-storage-directory"></a>
 #### The Storage Directory
