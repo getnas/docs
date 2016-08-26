@@ -86,17 +86,19 @@ Laravel 程序的默认架构是为给各种规模的应用提供更好的开发
 
 `storage` 目录存放已编译的视图模板、sessions 文件、缓存文件以及其他由框架自动生成的文件。此目录包括 `app`、`framework` 和 `logs` 三个子目录。`app` 目录存储一些由程序生成的文件。`framework` 目录存储框架生成的文件和缓存。`logs` 目录存储程序的日志文件。
 
-The `storage/app/public` directory may be used to store user-generated files, such as profile avatars, that should be publicly accessible. You should create a symbolic link at `public/storage` which points to this directory. You may create the link using the `php artisan storage:link` command.
+`storage/app/public` 目录可能用于存储用户生成的文件，例如头像，他们应该拥有公开访问权限。你应该创建一个软连接将 `public/storage` 指向此目录。你可能会使用 `php artisan storage:link` 命令创建连接。
 
 <a name="the-tests-directory"></a>
 #### The Tests Directory
 
 The `tests` directory contains your automated tests. An example [PHPUnit](https://phpunit.de/) is provided out of the box. Each test class should be suffixed with the word `Test`. You may run your tests using the `phpunit` or `php vendor/bin/phpunit` commands.
+`tests` 目录用于存放测试用例。[PHPUnit](https://phpunit.de/) 提供了一个开箱即用的示例。每个测试类文件都应以 `Test` 作为后缀。你可以使用 `phpunit` 或 `php vendor/bin/phpunit` 命令运行测试。
+
 
 <a name="the-vendor-directory"></a>
 #### The Vendor Directory
 
-The `vendor` directory contains your [Composer](https://getcomposer.org) dependencies.
+`vendor` 目录用于存放 [Composer](https://getcomposer.org) 依赖。
 
 <a name="the-app-directory"></a>
 ## The App Directory
