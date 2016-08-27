@@ -150,16 +150,17 @@ Laravel 程序的默认架构是为给各种规模的应用提供更好的开发
 <a name="the-notifications-directory"></a>
 #### The Notifications Directory
 
-This directory does not exist by default, but will be created for you if you execute the `make:notification` Artisan command. The `Notifications` directory contains all of the "transactional" notifications that are sent by your application, such as simple notifications about events that happen within your application. Laravel's notification features abstracts sending notifications over a variety of drivers such as email, Slack, SMS, or stored in a database.
+此目录默认不存在，在执行 `make:notification` Artisan 命令后会自动被创建。`Notifications` 目录存放所有由应用发出的 "transactional" 通知，诸如事件发生通知。Laravel 的通知功能支持多种驱动，如电子邮件、Slack、SMS 或存储在数据库。
 
 <a name="the-policies-directory"></a>
 #### The Policies Directory
 
-This directory does not exist by default, but will be created for you if you execute the `make:policy` Artisan command. The `Policies` directory contains the authorization policy classes for your application. Policies are used to determine if a user can perform a given action against a resource. For more information, check out the [authorization documentation](/docs/{{version}}/authorization).
+此目录默认不存在，在执行 `make:policy` Artisan 命令后会自动被创建。`Policies` 目录存放应用的授权策略类文件。策略用于检测用户是否有权限执行给定的操作。请查阅 [authorization documentation](/docs/{{version}}/authorization) 了解详情。
+
 
 <a name="the-providers-directory"></a>
 #### The Providers Directory
 
-The `Providers` directory contains all of the [service providers](/docs/{{version}}/providers) for your application. Service providers bootstrap your application by binding services in the service container, registering events, or performing any other tasks to prepare your application for incoming requests.
+`Providers` 目录存放应用的 [service providers](/docs/{{version}}/providers)。Service providers 通过在 service container 绑定服务、注册事件或对入站请求执行任何其他任务匹配从而引导你的应用。
 
-In a fresh Laravel application, this directory will already contain several providers. You are free to add your own providers to this directory as needed.
+全新的 Laravel 应用已默认包含了几个 provider 文件。你可以根据需要自行添加 provider 到此目录。
