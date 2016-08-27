@@ -71,9 +71,9 @@ Laravel 支持将日志信息写到 `single` 文件、`daily` 文件、`syslog` 
 <a name="report-method"></a>
 ### 报告方法
 
-All exceptions are handled by the `App\Exceptions\Handler` class. This class contains two methods: `report` and `render`. We'll examine each of these methods in detail. The `report` method is used to log exceptions or send them to an external service like [Bugsnag](https://bugsnag.com) or [Sentry](https://github.com/getsentry/sentry-laravel). By default, the `report` method simply passes the exception to the base class where the exception is logged. However, you are free to log exceptions however you wish.
+所有的异常均由 `App\Exceptions\Handler` 类处理。该类包含两个方法：`report` 和 `render`。`report` 方法用于记录异常或发送异常信息到外部服务，例如，[Bugsnag](https://bugsnag.com) 或 [Sentry](https://github.com/getsentry/sentry-laravel)。默认情况下，`report` 方法简单的将异常传送到记录异常日志的基类。当然，你可以随意对异常日志按需设置。
 
-For example, if you need to report different types of exceptions in different ways, you may use the PHP `instanceof` comparison operator:
+例如，你需要用不同的方式报告不同类别的日志，你可能要使用 PHP 的 `instanceof` 操作：
 
     /**
      * Report or log an exception.
@@ -92,9 +92,10 @@ For example, if you need to report different types of exceptions in different wa
         return parent::report($exception);
     }
 
-#### Ignoring Exceptions By Type
+#### 依据类型忽略异常
 
 The `$dontReport` property of the exception handler contains an array of exception types that will not be logged. For example, exceptions resulting from 404 errors, as well as several other types of errors, are not written to your log files. You may add other exception types to this array as needed:
+`$dontReport` 属性
 
     /**
      * A list of the exception types that should not be reported.
