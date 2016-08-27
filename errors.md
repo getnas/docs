@@ -1,63 +1,63 @@
-# Errors & Logging
+# 错误 & 日志
 
-- [Introduction](#introduction)
-- [Configuration](#configuration)
-    - [Error Detail](#error-detail)
-    - [Log Storage](#log-storage)
-    - [Log Severity Levels](#log-severity-levels)
-    - [Custom Monolog Configuration](#custom-monolog-configuration)
-- [The Exception Handler](#the-exception-handler)
-    - [Report Method](#report-method)
-    - [Render Method](#render-method)
-- [HTTP Exceptions](#http-exceptions)
-    - [Custom HTTP Error Pages](#custom-http-error-pages)
-- [Logging](#logging)
+- [介绍](#introduction)
+- [配置](#configuration)
+    - [错误详情](#error-detail)
+    - [日志存储](#log-storage)
+    - [日志等级](#log-severity-levels)
+    - [自定义 Monolog 配置](#custom-monolog-configuration)
+- [异常处理程序](#the-exception-handler)
+    - [报告方法](#report-method)
+    - [渲染方法](#render-method)
+- [HTTP 异常](#http-exceptions)
+    - [自定义 HTTP 错误页面](#custom-http-error-pages)
+- [日志](#logging)
 
 <a name="introduction"></a>
-## Introduction
+## 介绍
 
-When you start a new Laravel project, error and exception handling is already configured for you. The `App\Exceptions\Handler` class is where all exceptions triggered by your application are logged and then rendered back to the user. We'll dive deeper into this class throughout this documentation.
+Laravel 默认已完成了错误和异常处理的配置。`App\Exceptions\Handler` 类将应用引发的所有异常都记录下来，然后返回给用户。此文档将深入介绍这个类。
 
-For logging, Laravel utilizes the [Monolog](https://github.com/Seldaek/monolog) library, which provides support for a variety of powerful log handlers. Laravel configures several of these handlers for you, allowing you to choose between a single log file, rotating log files, or writing error information to the system log.
+Laravel 利用 [Monolog](https://github.com/Seldaek/monolog) 库实现日志功能。Monolog 提供了大量的功能强大的日志处理器。Laravel 为你配置了几种处理器，你可以选择单个日志文件、ratating 日志文件或将错误信息写入系统日志。
 
 <a name="configuration"></a>
-## Configuration
+## 配置
 
 <a name="error-detail"></a>
-### Error Detail
+### 错误详情
 
-The `debug` option in your `config/app.php` configuration file determines how much information about an error is actually displayed to the user. By default, this option is set to respect the value of the `APP_DEBUG` environment variable, which is stored in your `.env` file.
+`config/app.php` 配置文件中的 `debug` 选项用以确定向用户显示多少错误信息。默认情况下，此项设置会调用 `.env` 文件中的 `APP_DEBUG` 环境变量的值。
 
-For local development, you should set the `APP_DEBUG` environment variable to `true`. In your production environment, this value should always be `false`. If the value is set to `true` in production, you risk exposing sensitive configuration values to your application's end users.
+对于本地开发，你应将 `APP_DEBUG` 环境变量设置为 `true`。而在生产环境中应该始终将其设置为 `false`，否则程序会因将敏感配置信息暴露给终端用户而造成安全风险。
 
 <a name="log-storage"></a>
-### Log Storage
+### 日志存储
 
-Out of the box, Laravel supports writing log information to `single` files, `daily` files, the `syslog`, and the `errorlog`. To configure which storage mechanism Laravel uses, you should modify the `log` option in your `config/app.php` configuration file. For example, if you wish to use daily log files instead of a single file, you should set the `log` value in your `app` configuration file to `daily`:
+Laravel 支持将日志信息写到 `single` 文件、`daily` 文件、`syslog` 以及  `errorlog`。你可以在 `config/app.php` 配置文件的 `log` 选项设置 Laravel 使用的存储机制。例如，你想使用 daily 日志文件：
 
     'log' => 'daily'
 
-#### Maximum Daily Log Files
+#### 最大 Daily 日志文件
 
-When using the `daily` log mode, Laravel will only retain five days of log files by default. If you want to adjust the number of retained files, you may add a `log_max_files` configuration value to your `app` configuration file:
+使用 `daily` 日志模式时，Laravel 将默认保存日志 5 天。如果你想修改保存的时长，应该添加 `log_max_files` 选项到 `app` 配置文件中：
 
     'log_max_files' => 30
 
 <a name="log-severity-levels"></a>
-### Log Severity Levels
+### 日志等级
 
-When using Monolog, log messages may have different levels of severity. By default, Laravel writes all log levels to storage. However, in your production environment, you may wish to configure the minimum severity that should be logged by adding the `log_level` option to your `app.php` configuration file.
+当你使用 Monolog 时，日志信息可能有不同的等级。默认情况下，Laravel 会记录所有日志到存储。然而，在生产环境中，你可能希望调低日志等级。在 `app.php` 配置文建中设置 `log_level` 选项。
 
-Once this option has been configured, Laravel will log all levels greater than or equal to the specified severity. For example, a default `log_level` of `error` will log **error**, **critical**, **alert**, and **emergency** messages:
+配置此选项后，Laravel 的日志将大于或等于设置的等级。例如，默认的 `log_level` 为 `error`，这将记录 **error**、**critical**、**alert** 和 **emergency**：
 
     'log_level' => env('APP_LOG_LEVEL', 'error'),
 
-> {tip} Monolog recognizes the following severity levels - from least severe to most severe: `debug`, `info`, `notice`, `warning`, `error`, `critical`, `alert`, `emergency`.
+> {tip} Monolog 支持如下日志等级 - 程度从低到高依次为：`debug`、`info`、`notice`、`warning`、`error`、`critical`、`alert`、`emergency`。
 
 <a name="custom-monolog-configuration"></a>
-### Custom Monolog Configuration
+### 自定义 Monolog 配置
 
-If you would like to have complete control over how Monolog is configured for your application, you may use the application's `configureMonologUsing` method. You should place a call to this method in your `bootstrap/app.php` file right before the `$app` variable is returned by the file:
+如果你想完全控制 Monolog，你可能需要使用应用的 `configureMonologUsing` 方法。你应将此方法在 `bootstrap/app.php` 文件的 `return $app` 变量之前调用：
 
     $app->configureMonologUsing(function($monolog) {
         $monolog->pushHandler(...);
@@ -66,10 +66,10 @@ If you would like to have complete control over how Monolog is configured for yo
     return $app;
 
 <a name="the-exception-handler"></a>
-## The Exception Handler
+## 异常处理程序
 
 <a name="report-method"></a>
-### The Report Method
+### 报告方法
 
 All exceptions are handled by the `App\Exceptions\Handler` class. This class contains two methods: `report` and `render`. We'll examine each of these methods in detail. The `report` method is used to log exceptions or send them to an external service like [Bugsnag](https://bugsnag.com) or [Sentry](https://github.com/getsentry/sentry-laravel). By default, the `report` method simply passes the exception to the base class where the exception is logged. However, you are free to log exceptions however you wish.
 
