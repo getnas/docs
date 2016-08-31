@@ -14,7 +14,7 @@
     - [Errors & Logging ✅](errors.md)
 - Dev Environments
     - [Homestead ✅](homestead.md)
-    - [Valet](valet.md)
+    - [Valet ✅](valet.md)
 - Core Concepts
     - [Service Container](container.md)
     - [Service Providers](providers.md)
