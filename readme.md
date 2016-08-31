@@ -2,25 +2,25 @@
 
 ### 目录
 
-- Prologue
+- 序言
     - [Release Notes](releases.md)
     - [Upgrade Guide](upgrade.md)
     - [Contribution Guide](contributions.md)
     - [API Documentation](/api/{{version}}.md)
-- Getting Started
-    - [Installation ✅](installation.md.md)
-    - [Configuration ✅](configuration.md)
-    - [Directory Structure ✅](structure.md)
-    - [Errors & Logging ✅](errors.md)
-- Dev Environments
+- 起步
+    - [安装 ✅](installation.md.md)
+    - [配置 ✅](configuration.md)
+    - [目录结构 ✅](structure.md)
+    - [错误 & 日志 ✅](errors.md)
+- 开发环境
     - [Homestead ✅](homestead.md)
     - [Valet ✅](valet.md)
-- Core Concepts
-    - [Service Container](container.md)
+- 核心概念
+    - [Service Container 📝](container.md)
     - [Service Providers](providers.md)
     - [Facades](facades.md)
     - [Contracts](contracts.md)
-- The HTTP Layer
+- HTTP 层
     - [Routing](routing.md)
     - [Middleware](middleware.md)
     - [CSRF Protection](csrf.md)
@@ -29,21 +29,21 @@
     - [Responses](responses.md)
     - [Session](session.md)
     - [Validation](validation.md)
-- Views & Templates
+- 视图 & 模板
     - [Views](views.md)
     - [Blade Templates](blade.md)
     - [Localization](localization.md)
 - JavaScript & CSS
     - [Getting Started](frontend.md)
     - [Compiling Assets](elixir.md)
-- Security
+- 安全
     - [Authentication](authentication.md)
     - [Authorization](authorization.md)
     - [Password Reset](passwords.md)
     - [API Authentication](passport.md)
     - [Encryption](encryption.md)
     - [Hashing](hashing.md)
-- General Topics
+- 常规主题
     - [Broadcasting](broadcasting.md)
     - [Cache](cache.md)
     - [Events](events.md)
@@ -51,7 +51,7 @@
     - [Mail](mail.md)
     - [Notifications](notifications.md)
     - [Queues](queues.md)
-- Database
+- 数据库
     - [Getting Started](database.md)
     - [Query Builder](queries.md)
     - [Pagination](pagination.md)
@@ -67,18 +67,18 @@
 - Artisan Console
     - [Commands](artisan.md)
     - [Task Scheduling](scheduling.md)
-- Testing
+- 测试
     - [Getting Started](testing.md)
     - [Application Testing](application-testing.md)
     - [Database](database-testing.md)
     - [Mocking](mocking.md)
-- Official Packages
+- 官方软件包
     - [Cashier](billing.md)
     - [Envoy](envoy.md)
     - [Passport](passport.md)
     - [Scout](scout.md)
     - [Socialite](https://github.com/laravel/socialite.md)
-- Appendix
+- 附录
     - [Collections](collections.md)
     - [Helpers](helpers.md)
     - [Packages](packages.md)
