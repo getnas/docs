@@ -8,7 +8,7 @@
     - [Contribution Guide](/docs/{{version}}/contributions)
     - [API Documentation](/api/{{version}})
 - Getting Started
-    - [Installation ✅](/docs/{{version}}/installation)
+    - [Installation ✅](/installation)
     - [Configuration ✅](/docs/{{version}}/configuration)
     - [Directory Structure ✅](/docs/{{version}}/structure)
     - [Errors & Logging ✅](/docs/{{version}}/errors)
